@@ -11,7 +11,9 @@ const Sidebar = ({
   activeNoteId,
   setActiveNoteId,
 }) => {
-  const sortedNotes = notes.sort((a, b) => b.modifyDate - a.modifyDate);
+  const sortedNotes = Array.from(notes).sort(
+    (a, b) => b.modifyDate - a.modifyDate
+  );
   return (
     <Card className="vh-100 rounded-0">
       <Card.Header className="d-flex">

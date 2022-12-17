@@ -1,18 +1,22 @@
 import React from "react";
 import { Card, Form } from "react-bootstrap";
 
-const Main = ({ activeNote }) => {
-  const onEditNote = () => {};
+const Main = ({ activeNote, onUpdateNote }) => {
+  /**
+   * 編集したノートの内容でnotesを更新
+   * @param {*} key
+   * @param {*} value
+   */
+  const onEditNote = (key, value) => {
+    onUpdateNote({
+      ...activeNote,
+      [key]: value,
+      modifyDate: Date.now(),
+    });
+  };
 
   return (
     <Card className="vh-100 border-0">
-      {/* <Card.Header className="d-flex">
-        <span className="display-6">Note</span>
-        <Button onClick={onAddNote} className="ms-auto">
-        <FontAwesomeIcon icon={faAdd} className="me-1" />
-        追加
-        </Button>
-      </Card.Header> */}
       <Card.Body>
         {!activeNote ? (
           <>
@@ -28,6 +32,7 @@ const Main = ({ activeNote }) => {
                 placeholder="タイトル"
                 value={activeNote?.title}
                 onChange={(e) => onEditNote("title", e.target.value)}
+                id="title"
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -37,6 +42,7 @@ const Main = ({ activeNote }) => {
                 rows="10"
                 value={activeNote?.content}
                 onChange={(e) => onEditNote("content", e.target.value)}
+                id="content"
               />
             </Form.Group>
           </Form>

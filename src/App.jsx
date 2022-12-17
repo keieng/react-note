@@ -27,7 +27,7 @@ function App() {
   };
 
   /**
-   * ノートを削除する関数
+   * ノートを削除
    * @param {*} id
    */
   const onDeleteNote = (id) => {
@@ -35,7 +35,10 @@ function App() {
     setNotes(filterNotes);
   };
 
-  const updateNote = () => {
+  /**
+   * ノートを更新
+   */
+  const onUpdateNote = (updatedNote) => {
     // 修正された新しいノートの配列を返す
     const updatedNotes = notes.map((note) => {
       if (note.id === updatedNote.id) {
@@ -44,6 +47,8 @@ function App() {
         return note;
       }
     });
+
+    setNotes(updatedNotes);
   };
 
   /**
@@ -57,7 +62,7 @@ function App() {
   return (
     <div className="App">
       <Row className="g-0">
-        <Col className="d-none d-sm-inline">
+        <Col className="col-3">
           <Sidebar
             onAddNote={onAddNote}
             notes={notes}
@@ -66,31 +71,8 @@ function App() {
             setIsActive={setActiveNoteId}
           />
         </Col>
-        <Col sm="9">
-          <Main activeNote={getActiveNote()} />
-          {/* <Button variant="primary" className="d-sm-none" onClick={handleShow}>
-            Launch
-          </Button>
-
-          <Offcanvas
-            show={show}
-            backdrop={false}
-            scroll={true}
-            onHide={handleClose}
-          >
-            <Offcanvas.Header closeButton>
-              <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body>
-              <Sidebar
-                onAddNote={onAddNote}
-                notes={notes}
-                onDeleteNote={onDeleteNote}
-                activeNote={activeNote}
-                setActiveNote={setActiveNote}
-              />{" "}
-            </Offcanvas.Body>
-          </Offcanvas> */}
+        <Col className="col-9">
+          <Main activeNote={getActiveNote()} onUpdateNote={onUpdateNote} />
         </Col>
       </Row>
     </div>

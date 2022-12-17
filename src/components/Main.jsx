@@ -33,7 +33,7 @@ const Main = ({ activeNote, onUpdateNote }) => {
                 placeholder="タイトル"
                 value={activeNote?.title}
                 onChange={(e) => onEditNote("title", e.target.value)}
-                id="title"
+                htmlFor="title"
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -43,7 +43,7 @@ const Main = ({ activeNote, onUpdateNote }) => {
                 rows="10"
                 value={activeNote?.content}
                 onChange={(e) => onEditNote("content", e.target.value)}
-                id="content"
+                htmlFor="content"
               />
             </Form.Group>
           </Form>

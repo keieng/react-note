@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import uuid from "react-uuid";
 import Main from "./components/Main";
@@ -10,7 +10,6 @@ function App() {
   const [notes, setNotes] = useState([]);
   // 選択中のノートのidをセットする
   const [activeNoteId, setActiveNoteId] = useState("");
-
   // ノートの追加
   const onAddNote = () => {
     const newNote = {
@@ -63,8 +62,8 @@ function App() {
             onAddNote={onAddNote}
             notes={notes}
             onDeleteNote={onDeleteNote}
-            isActive={activeNoteId}
-            setIsActive={setActiveNoteId}
+            activeNoteId={activeNoteId}
+            setActiveNoteId={setActiveNoteId}
           />
         </Col>
         <Col className="col-9">

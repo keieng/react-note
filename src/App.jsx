@@ -11,17 +11,14 @@ function App() {
   // 選択中のノートのidをセットする
   const [activeNoteId, setActiveNoteId] = useState("");
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   // ノートの追加
   const onAddNote = () => {
     const newNote = {
       id: uuid(),
-      title: "new note",
+      title: "",
       content: "",
       createDate: Date.now(),
+      modifyDate: Date.now(),
     };
     setNotes([...notes, newNote]);
   };
@@ -47,7 +44,6 @@ function App() {
         return note;
       }
     });
-
     setNotes(updatedNotes);
   };
 

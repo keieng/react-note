@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Form } from "react-bootstrap";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 const Main = ({ activeNote, onUpdateNote }) => {
   /**
@@ -50,7 +51,7 @@ const Main = ({ activeNote, onUpdateNote }) => {
       </Card.Body>
       <div className="h-50 bg-light p-3">
         <h1>{activeNote?.title}</h1>
-        {activeNote?.content}
+        <ReactMarkdown>{activeNote?.content}</ReactMarkdown>
       </div>
     </Card>
   );

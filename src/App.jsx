@@ -7,9 +7,17 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 
 function App() {
   // ノート
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(
+    JSON.parse(localStorage.getItem("notes")) ?? []
+  );
   // 選択中のノートのidをセットする
   const [activeNoteId, setActiveNoteId] = useState("");
+
+  // ローカルストレージにノート情報を保存
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
+
   // ノートの追加
   const onAddNote = () => {
     const newNote = {
